@@ -10,7 +10,7 @@
         <!--Stories View Controller-->
         <scene sceneID="7hK-Jy-2QP">
             <objects>
-                <viewController storyboardIdentifier="StoriesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7D5-1Y-yTx" customClass="StoriesViewController" customModule="UIStoryView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoriesViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7D5-1Y-yTx" customClass="StoriesViewController" customModule="UIStoryView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UOf-Gh-sBo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
