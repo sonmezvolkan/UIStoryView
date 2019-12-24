@@ -61,7 +61,7 @@
 		F61006E023B1F88C001F7DAE /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F61006E223B1F891001F7DAE /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		F61006E723B1F99D001F7DAE /* closeIconWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeIconWhite@2x.png"; sourceTree = "<group>"; };
-		F61006EA23B1F9E1001F7DAE /* Story.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Story.storyboard; sourceTree = "<group>"; };
+		F61006EA23B1F9E1001F7DAE /* Story.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Story.storyboard; path = ../../../../../../../../../Users/saricas/Desktop/Volkan/iOS/UIStoryView/UIStoryView/View/Storyboard/Story.storyboard; sourceTree = SDKROOT; };
 		F61006F123B1FA61001F7DAE /* StoryScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryScrollView.swift; sourceTree = "<group>"; };
 		F61006F323B1FA69001F7DAE /* StorySectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorySectionView.xib; sourceTree = "<group>"; };
 		F61006F523B1FA6E001F7DAE /* StorySectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorySectionView.swift; sourceTree = "<group>"; };
