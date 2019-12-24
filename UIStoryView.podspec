@@ -93,7 +93,7 @@ Pod::Spec.new do |spec|
   spec.exclude_files = "Classes/Exclude"
 
 
-  s.resource_bundles = {
+  spec.resource_bundles = {
     "UIStoryView" => ["UIStoryView/**/*.{storyboard,xib}"]
   }
 
