@@ -2,16 +2,15 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoryView" customModule="StoryLibrary" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoryView" customModule="UIStoryView">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="Ynm-ss-OnZ"/>
-                <outlet property="imgView" destination="H5r-ng-0pC" id="A5r-z7-yFN"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Fw3-KZ-Bc5"/>
+                <outlet property="imgView" destination="c3G-2R-3wU" id="dGh-4R-prm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,20 +18,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H5r-ng-0pC">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3G-2R-3wU">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="H5r-ng-0pC" secondAttribute="bottom" id="1VO-OV-ln3"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="H5r-ng-0pC" secondAttribute="trailing" id="KPv-cl-3Jo"/>
-                <constraint firstItem="H5r-ng-0pC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="WFR-Na-VUp"/>
-                <constraint firstItem="H5r-ng-0pC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="YcX-sK-Z2U"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="c3G-2R-3wU" secondAttribute="bottom" id="B58-5m-QKw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="c3G-2R-3wU" secondAttribute="leading" id="FaX-9h-VoN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="c3G-2R-3wU" secondAttribute="trailing" id="Ql3-7P-k7d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="c3G-2R-3wU" secondAttribute="top" id="Tcl-Vs-0yW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-229" y="46"/>
+            <point key="canvasLocation" x="132" y="154"/>
         </view>
     </objects>
 </document>

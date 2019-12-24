@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StorySectionView" customModule="StoryLibrary" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StorySectionView" customModule="UIStoryView">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="pRv-8f-Wp1"/>
-                <outlet property="stackProgress" destination="OxX-sk-kMV" id="4XU-cI-Xuc"/>
-                <outlet property="viewStory" destination="IfP-GO-fda" id="MDr-Sv-CUN"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="gkf-pp-b4m"/>
+                <outlet property="stackProgress" destination="aXN-4S-b6m" id="ttc-R9-qDb"/>
+                <outlet property="viewStory" destination="4RF-ki-8rf" id="Iii-Lz-ak3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,55 +19,56 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfP-GO-fda">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4RF-ki-8rf">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GH-sg-wbo" userLabel="ProgresesView">
-                    <rect key="frame" x="12" y="60" width="390" height="2"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5V-9g-4wo" userLabel="ProgresesView">
+                    <rect key="frame" x="12" y="56" width="390" height="2"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OxX-sk-kMV">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="aXN-4S-b6m">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="2"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="OxX-sk-kMV" firstAttribute="leading" secondItem="2GH-sg-wbo" secondAttribute="leading" id="2uN-oF-y0M"/>
-                        <constraint firstAttribute="bottom" secondItem="OxX-sk-kMV" secondAttribute="bottom" id="GAm-OS-O5Y"/>
-                        <constraint firstAttribute="height" constant="2" id="afG-mK-Gx4"/>
-                        <constraint firstItem="OxX-sk-kMV" firstAttribute="top" secondItem="2GH-sg-wbo" secondAttribute="top" id="fb1-D5-lPj"/>
-                        <constraint firstAttribute="trailing" secondItem="OxX-sk-kMV" secondAttribute="trailing" id="ode-FG-tqB"/>
+                        <constraint firstItem="aXN-4S-b6m" firstAttribute="top" secondItem="b5V-9g-4wo" secondAttribute="top" id="1Q6-0i-Cyj"/>
+                        <constraint firstAttribute="height" constant="2" id="KPX-eW-WOV"/>
+                        <constraint firstItem="aXN-4S-b6m" firstAttribute="leading" secondItem="b5V-9g-4wo" secondAttribute="leading" id="XpH-OU-daX"/>
+                        <constraint firstAttribute="trailing" secondItem="aXN-4S-b6m" secondAttribute="trailing" id="hDY-9M-HVF"/>
+                        <constraint firstAttribute="bottom" secondItem="aXN-4S-b6m" secondAttribute="bottom" id="mbO-nf-sas"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32r-Xh-dLG">
-                    <rect key="frame" x="366" y="74" width="32" height="32"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbV-xX-IXL">
+                    <rect key="frame" x="366" y="70" width="32" height="32"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="32" id="c9X-70-676"/>
-                        <constraint firstAttribute="height" constant="32" id="jWK-UK-5vF"/>
+                        <constraint firstAttribute="width" constant="32" id="Q8f-JU-zbg"/>
+                        <constraint firstAttribute="height" constant="32" id="e9q-Uc-gKe"/>
                     </constraints>
-                    <state key="normal" image="closeIconWhite"/>
+                    <state key="normal" image="closeIconWhite.png"/>
                     <connections>
-                        <action selector="btnClose_Click:" destination="-1" eventType="touchUpInside" id="dlU-9e-ga3"/>
+                        <action selector="btnClose_Click:" destination="-1" eventType="touchUpInside" id="k8o-Xe-t8l"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="32r-Xh-dLG" secondAttribute="trailing" constant="16" id="7a4-go-4QC"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IfP-GO-fda" secondAttribute="trailing" id="FuK-Ar-UI9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IfP-GO-fda" secondAttribute="bottom" id="M8a-of-ehM"/>
-                <constraint firstItem="32r-Xh-dLG" firstAttribute="top" secondItem="2GH-sg-wbo" secondAttribute="bottom" constant="12" id="aF6-xV-DTs"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2GH-sg-wbo" secondAttribute="trailing" constant="12" id="cdZ-as-ESG"/>
-                <constraint firstItem="2GH-sg-wbo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="kbj-ax-Ibe"/>
-                <constraint firstItem="IfP-GO-fda" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="s6I-xF-T00"/>
-                <constraint firstItem="2GH-sg-wbo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="vlU-Dz-c4t"/>
-                <constraint firstItem="IfP-GO-fda" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zAL-k3-IAq"/>
+                <constraint firstItem="b5V-9g-4wo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="6TG-AY-bJB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b5V-9g-4wo" secondAttribute="trailing" constant="12" id="D3j-sn-tyo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BbV-xX-IXL" secondAttribute="trailing" constant="16" id="HdG-hr-ZkO"/>
+                <constraint firstItem="BbV-xX-IXL" firstAttribute="top" secondItem="b5V-9g-4wo" secondAttribute="bottom" constant="12" id="K3Y-fd-LcW"/>
+                <constraint firstItem="4RF-ki-8rf" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="P2I-Rd-Xo6"/>
+                <constraint firstItem="4RF-ki-8rf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="SBg-Vc-gNm"/>
+                <constraint firstItem="4RF-ki-8rf" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="c2Y-Kn-2kf"/>
+                <constraint firstItem="4RF-ki-8rf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fph-8E-C6v"/>
+                <constraint firstItem="b5V-9g-4wo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="xws-fd-a69"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="133" y="154"/>
         </view>
     </objects>
     <resources>
-        <image name="closeIconWhite" width="16" height="16"/>
+        <image name="closeIconWhite.png" width="16" height="16"/>
     </resources>
 </document>

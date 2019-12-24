@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for UIStoryView.
 FOUNDATION_EXPORT double UIStoryViewVersionNumber;

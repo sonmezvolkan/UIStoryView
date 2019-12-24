@@ -1,8 +1,8 @@
 //
 //  UIColorExtension.swift
-//  StoryLibrary
+//  UIStoryView
 //
-//  Created by Volkan Sonmez on 26.09.2019.
+//  Created by Volkan Sonmez on 24.12.2019.
 //  Copyright © 2019 Porte. All rights reserved.
 //
 
@@ -28,3 +28,4 @@ extension UIColor {
         )
     }
 }
+

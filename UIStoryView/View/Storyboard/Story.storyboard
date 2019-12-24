@@ -8,34 +8,34 @@
     </dependencies>
     <scenes>
         <!--Stories View Controller-->
-        <scene sceneID="Sgf-yS-8db">
+        <scene sceneID="7hK-Jy-2QP">
             <objects>
-                <viewController storyboardIdentifier="StoriesViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oD0-uO-acK" customClass="StoriesViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rde-Vd-vWN">
+                <viewController storyboardIdentifier="StoriesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7D5-1Y-yTx" customClass="StoriesViewController" customModule="UIStoryView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UOf-Gh-sBo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="35d-50-IrJ" userLabel="ContentView" customClass="StoryScrollView" customModule="StoryLibrary" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1K3-NU-9F1" customClass="StoryScrollView" customModule="UIStoryView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="P6u-rF-eD1" firstAttribute="bottom" secondItem="35d-50-IrJ" secondAttribute="bottom" id="23Z-pE-RaH"/>
-                            <constraint firstItem="P6u-rF-eD1" firstAttribute="trailing" secondItem="35d-50-IrJ" secondAttribute="trailing" id="TcV-mw-dke"/>
-                            <constraint firstItem="P6u-rF-eD1" firstAttribute="top" secondItem="35d-50-IrJ" secondAttribute="top" id="YKR-Nx-PUL"/>
-                            <constraint firstItem="P6u-rF-eD1" firstAttribute="leading" secondItem="35d-50-IrJ" secondAttribute="leading" id="gtu-Jq-2Xv"/>
+                            <constraint firstItem="SVx-o8-R7F" firstAttribute="trailing" secondItem="1K3-NU-9F1" secondAttribute="trailing" id="3mK-Ny-m0m"/>
+                            <constraint firstItem="1K3-NU-9F1" firstAttribute="top" secondItem="SVx-o8-R7F" secondAttribute="top" id="GSV-cl-SVY"/>
+                            <constraint firstItem="SVx-o8-R7F" firstAttribute="bottom" secondItem="1K3-NU-9F1" secondAttribute="bottom" id="W0y-jP-EMV"/>
+                            <constraint firstItem="1K3-NU-9F1" firstAttribute="leading" secondItem="SVx-o8-R7F" secondAttribute="leading" id="Wit-wm-nmq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="P6u-rF-eD1"/>
+                        <viewLayoutGuide key="safeArea" id="SVx-o8-R7F"/>
                     </view>
                     <connections>
-                        <outlet property="storyScrollView" destination="35d-50-IrJ" id="HTH-Vj-eZk"/>
+                        <outlet property="storyScrollView" destination="1K3-NU-9F1" id="M5o-2J-qW5"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WSk-He-RaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wy9-9m-vvn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-55" y="34"/>
+            <point key="canvasLocation" x="-25" y="181"/>
         </scene>
     </scenes>
 </document>

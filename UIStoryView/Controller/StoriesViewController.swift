@@ -1,16 +1,16 @@
 //
 //  StoriesViewController.swift
-//  StoryLibrary
+//  UIStoryView
 //
-//  Created by Volkan Sonmez on 23.09.2019.
+//  Created by Volkan Sonmez on 24.12.2019.
 //  Copyright © 2019 Porte. All rights reserved.
 //
 
-import Foundation
-import UIKit;
+import UIKit
 
 open class StoriesViewController: UIViewController
 {
+
     @IBOutlet weak var storyScrollView: StoryScrollView!
     
     fileprivate var storiesSectionModel: [StorySectionModel]?;
@@ -24,12 +24,12 @@ open class StoriesViewController: UIViewController
     
     fileprivate class func createInstance() -> StoriesViewController
     {
-        return UIStoryboard(name: "Story", bundle: nil).instantiateViewController(withIdentifier: "StoriesViewController") as! StoriesViewController;
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoriesViewController") as! StoriesViewController;
     }
     
     override open func viewDidLoad()
     {
-        super.viewDidLoad();
+        super.viewDidLoad()
         self.setUp();
         self.commonInit();
     }
@@ -103,25 +103,25 @@ open class StoriesBuilder
     private var progressTintColor: UIColor = UIColor(red: 57, green: 151, blue: 254);
     private var stories: [StorySectionModel]!;
     
-    public init(stories: [StorySectionModel])
+    init(stories: [StorySectionModel])
     {
         self.storiesVC = StoriesViewController.createInstance();
         self.stories = stories;
     }
     
-    public func setTrackTintColor(color: UIColor) -> StoriesBuilder
+    func setTrackTintColor(color: UIColor) -> StoriesBuilder
     {
         self.trackTintColor = color;
         return self;
     }
     
-    public func setProgressTintColor(color: UIColor) -> StoriesBuilder
+    func setProgressTintColor(color: UIColor) -> StoriesBuilder
     {
         self.progressTintColor = color;
         return self;
     }
     
-    public func build() -> StoriesViewController
+    func build() -> StoriesViewController
     {
         self.storiesVC.storiesSectionModel = self.stories;
         self.storiesVC.tintColor = self.trackTintColor;
