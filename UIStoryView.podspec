@@ -92,6 +92,8 @@ Pod::Spec.new do |spec|
   spec.source_files  = "UIStoryView", "UIStoryView/**/*.{h,m,swift}"
   spec.exclude_files = "Classes/Exclude"
 
+
+
   # spec.public_header_files = "Classes/**/*.h"
 
 
@@ -132,5 +134,6 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
+   spec.dependency 'SDWebImage'
 
 end
