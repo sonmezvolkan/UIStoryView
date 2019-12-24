@@ -103,25 +103,25 @@ open class StoriesBuilder
     private var progressTintColor: UIColor = UIColor(red: 57, green: 151, blue: 254);
     private var stories: [StorySectionModel]!;
     
-    init(stories: [StorySectionModel])
+    public init(stories: [StorySectionModel])
     {
         self.storiesVC = StoriesViewController.createInstance();
         self.stories = stories;
     }
     
-    func setTrackTintColor(color: UIColor) -> StoriesBuilder
+    public func setTrackTintColor(color: UIColor) -> StoriesBuilder
     {
         self.trackTintColor = color;
         return self;
     }
     
-    func setProgressTintColor(color: UIColor) -> StoriesBuilder
+    public func setProgressTintColor(color: UIColor) -> StoriesBuilder
     {
         self.progressTintColor = color;
         return self;
     }
     
-    func build() -> StoriesViewController
+    public func build() -> StoriesViewController
     {
         self.storiesVC.storiesSectionModel = self.stories;
         self.storiesVC.tintColor = self.trackTintColor;
