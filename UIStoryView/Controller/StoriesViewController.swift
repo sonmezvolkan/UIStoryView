@@ -24,7 +24,10 @@ open class StoriesViewController: UIViewController
     
     fileprivate class func createInstance() -> StoriesViewController
     {
-        return UIStoryboard(name: "Story", bundle: nil).instantiateViewController(withIdentifier: "StoriesViewController") as! StoriesViewController;
+        let podBundle = Bundle(for: StoriesViewController.self)
+        let bundleURL = podBundle.url(forResource: "UIStoryView", withExtension: "bundle")
+        let bundle = Bundle(url: bundleURL!)!
+        return UIStoryboard(name: "Story", bundle: bundle).instantiateViewController(withIdentifier: "StoriesViewController") as! StoriesViewController;
     }
     
     override open func viewDidLoad()
@@ -128,4 +131,5 @@ open class StoriesBuilder
         self.storiesVC.progressColor = self.progressTintColor;
         return storiesVC;
     }
+    
 }
