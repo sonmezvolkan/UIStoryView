@@ -14,7 +14,7 @@ public class StoryModel
     private var path: String?;
     private var duration: Int?;
     
-    init(storyType: StoryType, path: String, duration: Int)
+    public init(storyType: StoryType, path: String, duration: Int)
     {
         self.storyType = storyType;
         self.path = path;

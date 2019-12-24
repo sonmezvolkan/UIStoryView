@@ -9,7 +9,7 @@
 import Foundation
 import UIKit;
 
-internal class StoriesViewController: UIViewController
+open class StoriesViewController: UIViewController
 {
     @IBOutlet weak var storyScrollView: StoryScrollView!
     
@@ -27,7 +27,7 @@ internal class StoriesViewController: UIViewController
         return UIStoryboard(name: "Story", bundle: nil).instantiateViewController(withIdentifier: "StoriesViewController") as! StoriesViewController;
     }
     
-    override func viewDidLoad()
+    override open func viewDidLoad()
     {
         super.viewDidLoad();
         self.setUp();
@@ -90,7 +90,7 @@ internal class StoriesViewController: UIViewController
         self.storyScrollView.addChildViews(self.storiesSectionView);
     }
     
-    override var prefersStatusBarHidden: Bool
+    override open var prefersStatusBarHidden: Bool
     {
         return true;
     }
@@ -103,25 +103,25 @@ open class StoriesBuilder
     private var progressTintColor: UIColor = UIColor(red: 57, green: 151, blue: 254);
     private var stories: [StorySectionModel]!;
     
-    init(stories: [StorySectionModel])
+    public init(stories: [StorySectionModel])
     {
         self.storiesVC = StoriesViewController.createInstance();
         self.stories = stories;
     }
     
-    func setTrackTintColor(color: UIColor) -> StoriesBuilder
+    public func setTrackTintColor(color: UIColor) -> StoriesBuilder
     {
         self.trackTintColor = color;
         return self;
     }
     
-    func setProgressTintColor(color: UIColor) -> StoriesBuilder
+    public func setProgressTintColor(color: UIColor) -> StoriesBuilder
     {
         self.progressTintColor = color;
         return self;
     }
     
-    func build() -> StoriesViewController
+    public func build() -> StoriesViewController
     {
         self.storiesVC.storiesSectionModel = self.stories;
         self.storiesVC.tintColor = self.trackTintColor;

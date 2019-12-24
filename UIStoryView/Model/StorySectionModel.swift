@@ -12,7 +12,7 @@ public class StorySectionModel
 {
     private var stories: [StoryModel]?;
     
-    init(stories: [StoryModel])
+    public init(stories: [StoryModel])
     {
         self.stories = stories;
     }
