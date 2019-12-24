@@ -24,7 +24,7 @@ open class StoriesViewController: UIViewController
     
     fileprivate class func createInstance() -> StoriesViewController
     {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StoriesViewController") as! StoriesViewController;
+        return UIStoryboard(name: "Story", bundle: nil).instantiateViewController(withIdentifier: "StoriesViewController") as! StoriesViewController;
     }
     
     override open func viewDidLoad()
