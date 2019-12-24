@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 public enum StoryType: Int
 {
     case Image = 1
     case Video = 2
 }
+

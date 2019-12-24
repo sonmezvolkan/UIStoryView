@@ -41,7 +41,10 @@ public class StoryView: UIView
     
     private func setUp()
     {
-        Bundle.main.loadNibNamed("StoryView", owner: self, options: nil);
+        let podBundle = Bundle(for: StoriesViewController.self)
+        let bundleURL = podBundle.url(forResource: "UIStoryView", withExtension: "bundle")
+        let bundle = Bundle(url: bundleURL!)!
+        bundle.loadNibNamed("StoryView", owner: self, options: nil);
         self.addSubview(self.contentView);
         self.contentView.frame = self.bounds;
         self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight];
