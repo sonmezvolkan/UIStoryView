@@ -92,7 +92,9 @@ Pod::Spec.new do |spec|
   spec.source_files  = "UIStoryView", "UIStoryView/**/*.{h,m,swift}"
   spec.exclude_files = "Classes/Exclude"
 
-
+  s.resource_bundles = {
+    'UIStoryView' => ['Pod/Classes/**/*.{storyboard,xib}']
+  }
 
   # spec.public_header_files = "Classes/**/*.h"
 
