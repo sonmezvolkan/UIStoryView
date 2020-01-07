@@ -13,7 +13,7 @@ open class StoriesViewController: UIViewController
 
     @IBOutlet weak var storyScrollView: StoryScrollView!
     
-    fileprivate var storiesSectionModel: [StorySectionModel]?;
+    fileprivate var storiesSectionModel: [IStorySection]?;
     
     private var storiesSectionView = [StorySectionView]();
     
@@ -104,9 +104,9 @@ open class StoriesBuilder
     private var storiesVC: StoriesViewController!;
     private var trackTintColor: UIColor = UIColor(red: 216, green: 216, blue: 216).withAlphaComponent(0.48);
     private var progressTintColor: UIColor = UIColor(red: 57, green: 151, blue: 254);
-    private var stories: [StorySectionModel]!;
+    private var stories: [IStorySection]!;
     
-    public init(stories: [StorySectionModel])
+    public init(stories: [IStorySection])
     {
         self.storiesVC = StoriesViewController.createInstance();
         self.stories = stories;

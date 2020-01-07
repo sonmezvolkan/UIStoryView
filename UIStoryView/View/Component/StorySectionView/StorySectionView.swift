@@ -18,7 +18,7 @@ public class StorySectionView: UIView
     public var onClose: (() -> Void)?;
     public var onNext: (() -> Void)?;
 
-    public var stories: [StoryModel]?;
+    public var stories: [IStory]?;
     public var isPause: Bool = true;
 
     private var storyTintColor: UIColor!;
@@ -32,7 +32,7 @@ public class StorySectionView: UIView
     private var beginDate: Date?;
     private var endDate: Date?;
     
-    init(frame: CGRect, storiesModel: [StoryModel], storyTintColor: UIColor, storyProgressColor: UIColor)
+    init(frame: CGRect, storiesModel: [IStory], storyTintColor: UIColor, storyProgressColor: UIColor)
     {
         super.init(frame: frame);
         self.stories = storiesModel;
@@ -87,7 +87,7 @@ extension StorySectionView
         return progressView;
     }
     
-    private func createView(_ storyModel: StoryModel, isLastStory: Bool) -> StoryView
+    private func createView(_ storyModel: IStory, isLastStory: Bool) -> StoryView
     {
         let storyView = StoryView(frame: self.contentView.bounds, storyModel: storyModel);
         storyView.isLastStory = isLastStory;

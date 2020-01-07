@@ -13,8 +13,6 @@
 		F61006C223B1F700001F7DAE /* UIStoryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61006C123B1F700001F7DAE /* UIStoryViewTests.swift */; };
 		F61006C423B1F700001F7DAE /* UIStoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = F61006B623B1F700001F7DAE /* UIStoryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F61006E823B1F99D001F7DAE /* closeIconWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F61006E723B1F99D001F7DAE /* closeIconWhite@2x.png */; };
-		F6319DE723B21B6F009BCEA5 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DE623B21B6F009BCEA5 /* StoryModel.swift */; };
-		F6319DE923B21B92009BCEA5 /* StorySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DE823B21B92009BCEA5 /* StorySectionModel.swift */; };
 		F6319DEB23B21BB9009BCEA5 /* HelperDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DEA23B21BB9009BCEA5 /* HelperDate.swift */; };
 		F6319DED23B21BD6009BCEA5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DEC23B21BD6009BCEA5 /* Constant.swift */; };
 		F6319DEF23B21C16009BCEA5 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DEE23B21C16009BCEA5 /* UIImageViewExtension.swift */; };
@@ -24,6 +22,8 @@
 		F6319DF923B21CB9009BCEA5 /* StorySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DF823B21CB9009BCEA5 /* StorySectionView.swift */; };
 		F6319DFD23B21E4C009BCEA5 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DFC23B21E4C009BCEA5 /* StoryView.swift */; };
 		F6319E0023B21ED3009BCEA5 /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6319DFF23B21ED3009BCEA5 /* StoriesViewController.swift */; };
+		F6CE530F23C4ACF4003E703C /* IStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE530E23C4ACF4003E703C /* IStory.swift */; };
+		F6CE531123C4ACFE003E703C /* IStorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE531023C4ACFE003E703C /* IStorySection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +50,6 @@
 		F61006C123B1F700001F7DAE /* UIStoryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryViewTests.swift; sourceTree = "<group>"; };
 		F61006C323B1F700001F7DAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F61006E723B1F99D001F7DAE /* closeIconWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeIconWhite@2x.png"; sourceTree = "<group>"; };
-		F6319DE623B21B6F009BCEA5 /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
-		F6319DE823B21B92009BCEA5 /* StorySectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySectionModel.swift; sourceTree = "<group>"; };
 		F6319DEA23B21BB9009BCEA5 /* HelperDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDate.swift; sourceTree = "<group>"; };
 		F6319DEC23B21BD6009BCEA5 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F6319DEE23B21C16009BCEA5 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -64,6 +62,8 @@
 		F6319DFC23B21E4C009BCEA5 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		F6319DFE23B21EB1009BCEA5 /* Story.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Story.storyboard; sourceTree = "<group>"; };
 		F6319DFF23B21ED3009BCEA5 /* StoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
+		F6CE530E23C4ACF4003E703C /* IStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStory.swift; sourceTree = "<group>"; };
+		F6CE531023C4ACFE003E703C /* IStorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStorySection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +130,8 @@
 		F61006B523B1F700001F7DAE /* UIStoryView */ = {
 			isa = PBXGroup;
 			children = (
+				F6CE530D23C4ACCA003E703C /* Abstracts */,
 				F61006D423B1F854001F7DAE /* Utility */,
-				F61006CD23B1F80C001F7DAE /* Model */,
 				F61006EC23B1FA01001F7DAE /* View */,
 				F61006EB23B1F9ED001F7DAE /* Controller */,
 				F61006B623B1F700001F7DAE /* UIStoryView.h */,
@@ -147,15 +147,6 @@
 				F61006C323B1F700001F7DAE /* Info.plist */,
 			);
 			path = UIStoryViewTests;
-			sourceTree = "<group>";
-		};
-		F61006CD23B1F80C001F7DAE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F6319DE623B21B6F009BCEA5 /* StoryModel.swift */,
-				F6319DE823B21B92009BCEA5 /* StorySectionModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F61006D423B1F854001F7DAE /* Utility */ = {
@@ -262,6 +253,15 @@
 				F61006ED23B1FA20001F7DAE /* StoryView */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		F6CE530D23C4ACCA003E703C /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+				F6CE530E23C4ACF4003E703C /* IStory.swift */,
+				F6CE531023C4ACFE003E703C /* IStorySection.swift */,
+			);
+			path = Abstracts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,12 +416,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6CE531123C4ACFE003E703C /* IStorySection.swift in Sources */,
 				F6319DFD23B21E4C009BCEA5 /* StoryView.swift in Sources */,
 				F6319DEF23B21C16009BCEA5 /* UIImageViewExtension.swift in Sources */,
 				F6319DF323B21C41009BCEA5 /* DateExtension.swift in Sources */,
-				F6319DE723B21B6F009BCEA5 /* StoryModel.swift in Sources */,
 				F6319DF723B21C91009BCEA5 /* StoryScrollView.swift in Sources */,
-				F6319DE923B21B92009BCEA5 /* StorySectionModel.swift in Sources */,
+				F6CE530F23C4ACF4003E703C /* IStory.swift in Sources */,
 				F6319DEB23B21BB9009BCEA5 /* HelperDate.swift in Sources */,
 				F6319E0023B21ED3009BCEA5 /* StoriesViewController.swift in Sources */,
 				F6319DF923B21CB9009BCEA5 /* StorySectionView.swift in Sources */,

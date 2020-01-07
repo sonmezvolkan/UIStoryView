@@ -17,10 +17,10 @@ public class StoryView: UIView
     public var onLoadDidEnd: ((Bool) -> Void)?;
     public var isLastStory: Bool?;
     
-    private var storyModel: StoryModel?;
+    private var storyModel: IStory?;
     private var isLoaded: Bool = false;
     
-    init(frame: CGRect, storyModel: StoryModel)
+    init(frame: CGRect, storyModel: IStory)
     {
         super.init(frame: frame);
         self.storyModel = storyModel;
