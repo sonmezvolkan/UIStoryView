@@ -7,7 +7,7 @@
 
 UIStoryView supports swift 5.0, iOS 10
 
-1. Add pod ‘UIStoryView’, :git => ‘https://github.com/Samcro92/UIStoryView’
+1. Add pod ‘UIStoryView’
 2. Install the pods by running pod install.
 3. Add import UIStoryView in the .swift files where you want to use it.
 
