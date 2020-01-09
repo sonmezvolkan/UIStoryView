@@ -17,14 +17,16 @@ Pod::Spec.new do |spec|
 
   spec.name         = "UIStoryView"
   spec.version      = "1.0.1"
-  spec.summary      = "A short description of UIStoryView."
+  spec.summary      = "An instagram storyview like framework with an easy-to-use interface."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "My uistoryview is so good"
+  spec.description  = "This library provides an easy way to create Instagram story-like views " \
+                      "with cube animations. It requires an arraylist of IStorySection as parameter. " \
+                      "Two more optional parameters are available for changing the colors of progress bar."
 
   spec.homepage     = "https://github.com/Samcro92"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -37,8 +39,8 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT"
-  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # spec.license      = "MIT"
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
