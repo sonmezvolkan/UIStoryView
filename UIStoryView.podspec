@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "UIStoryView"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.summary      = "An instagram storyview like framework with an easy-to-use interface."
 
   # This description is used to generate tags and improve search results.
