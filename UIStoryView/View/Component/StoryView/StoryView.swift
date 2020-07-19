@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit;
+import AVKit
 
 public class StoryView: UIView
 {
@@ -19,6 +20,11 @@ public class StoryView: UIView
     
     private var storyModel: IStory?;
     private var isLoaded: Bool = false;
+    
+    private var player: AVPlayer?
+    private var playerLayer: AVPlayerLayer?
+    
+    private var isStalled: Bool = false
     
     init(frame: CGRect, storyModel: IStory)
     {
@@ -53,17 +59,69 @@ public class StoryView: UIView
     
     private func setControls()
     {
+        guard let storyModel = self.storyModel else { return }
+        storyModel.isTypeImage ? setImageStoryControls() : setVideoStoryControls()
+    }
+    
+    private func setImageStoryControls()
+    {
         self.imgView.frame = self.bounds;
+    }
+    
+    private func setVideoStoryControls()
+    {
+        imgView.isHidden = true
+        
+        playerLayer?.frame = self.bounds
     }
     
     private func getStory()
     {
-        if let storyModel = self.storyModel, storyModel.isTypeImage
+        guard let storyModel = self.storyModel else { return }
+        storyModel.isTypeImage ? getImageStory() : getVideoStory()
+    }
+    
+    private func getImageStory() {
+        if let storyModel = self.storyModel
         {
             self.imgView.downloadImageWithoutPlaceHolder(link: storyModel.getPath()) { (flag) in
                 self.isLoaded = true;
                 self.onLoadDidEnd?(true);
             }
+        }
+    }
+    
+    private func getVideoStory() {
+        guard let storyModel = self.storyModel, let url = URL(string: storyModel.getPath()) else { return }
+        
+        player = AVPlayer(url: url)
+        self.playerLayer = AVPlayerLayer(player: player)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.stalled(notification:)),
+                                                    name: NSNotification.Name.AVPlayerItemPlaybackStalled,
+                                                    object: nil)
+        self.player!.addObserver(self, forKeyPath: "status", options: [], context: nil);
+        self.player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main, using: { (cmTime) in
+            if (self.player!.currentItem?.status == .readyToPlay)
+            {
+                self.videoLoaded()
+                let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
+                print("\(Float(time))   rate \(self.player!.rate)");
+            }
+        });
+        playerLayer?.frame = self.bounds;
+        self.contentView.layer.addSublayer(playerLayer!);
+        player!.play();
+    }
+    
+    @objc private func stalled(notification: NSNotification)
+    {
+        self.isStalled = true
+    }
+    
+    private func videoLoaded() {
+        if !isLoaded {
+            isLoaded = true
+            onLoadDidEnd?(true)
         }
     }
 }
@@ -73,5 +131,13 @@ extension StoryView
     public func getIsLoaded() -> Bool
     {
         return self.isLoaded;
+    }
+    
+    public func getIsStalled() -> Bool {
+        return isStalled
+    }
+    
+    public func dismissAVPlayer() {
+        
     }
 }
