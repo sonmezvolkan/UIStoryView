@@ -76,6 +76,7 @@ public class StoryScrollView: UIScrollView, UIScrollViewDelegate
             let height = self.frame.size.height
             
             let frame = CGRect(x: CGFloat(index)*width, y: 0, width: width, height: height)
+            onDidChange?(index)
             scrollRectToVisible(frame, animated: animated)
         }
     }

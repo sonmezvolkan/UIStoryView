@@ -72,7 +72,7 @@ public class StoryView: UIView
     {
         imgView.isHidden = true
         
-        playerLayer?.frame = self.bounds
+        playerLayer?.frame = self.contentView.bounds
     }
     
     private func getStory()
@@ -99,7 +99,7 @@ public class StoryView: UIView
         NotificationCenter.default.addObserver(self, selector: #selector(self.stalled(notification:)),
                                                     name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                                     object: nil)
-        self.player!.addObserver(self, forKeyPath: "status", options: [], context: nil);
+//        self.player!.addObserver(self, forKeyPath: "status", options: [], context: nil);
         self.player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main, using: { (cmTime) in
             if (self.player!.currentItem?.status == .readyToPlay)
             {
@@ -110,7 +110,7 @@ public class StoryView: UIView
         });
         playerLayer?.frame = self.bounds;
         self.contentView.layer.addSublayer(playerLayer!);
-        player!.play();
+
     }
     
     @objc private func stalled(notification: NSNotification)
@@ -123,6 +123,18 @@ public class StoryView: UIView
             isLoaded = true
             onLoadDidEnd?(true)
         }
+    }
+    
+    public func play() {
+        player?.play()
+    }
+    
+    public func rePlay() {
+        player?.seek(to: CMTime.zero)
+    }
+    
+    public func pause() {
+        player?.pause()
     }
 }
 

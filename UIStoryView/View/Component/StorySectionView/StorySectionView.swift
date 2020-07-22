@@ -32,12 +32,15 @@ public class StorySectionView: UIView
     private var beginDate: Date?;
     private var endDate: Date?;
     
-    init(frame: CGRect, storiesModel: [IStory], storyTintColor: UIColor, storyProgressColor: UIColor)
+    public var canVideoPlay: Bool = false
+    
+    init(frame: CGRect, storiesModel: [IStory], storyTintColor: UIColor, storyProgressColor: UIColor, canVideoPlay: Bool)
     {
         super.init(frame: frame);
         self.stories = storiesModel;
         self.storyTintColor = storyTintColor;
         self.storyProgressColor = storyProgressColor;
+        self.canVideoPlay = canVideoPlay
         self.setUp();
     }
     
@@ -61,6 +64,7 @@ public class StorySectionView: UIView
     
     @IBAction func btnClose_Click(_ sender: Any)
     {
+        timer?.invalidate()
         self.onClose?();
     }
 }
@@ -101,6 +105,7 @@ extension StorySectionView
     {
         self.beginDate = Date();
         self.isPause = true;
+        self.storiesView[self.currentIndex].pause()
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -114,6 +119,8 @@ extension StorySectionView
             {
                 self.resetTimer(touchLocation: touch.location(in: self));
             }
+        } else {
+            self.storiesView[self.currentIndex].play()
         }
     }
 }
@@ -157,6 +164,7 @@ extension StorySectionView
         {
             self.changeCurrentIndex(touchLocation: touchLocation!);
         }
+        self.storiesView[self.currentIndex].rePlay()
     }
     
     private func changeCurrentIndex(touchLocation: CGPoint)
@@ -189,11 +197,14 @@ extension StorySectionView
         }
     }
     
-    private func removeStoryViews()
+    public func removeStoryViews()
     {
-        for storyView in self.viewStory.subviews
+        for view in self.viewStory.subviews
         {
-            storyView.removeFromSuperview();
+            if let storyView = view as? StoryView {
+                storyView.pause()
+            }
+            view.removeFromSuperview();
         }
     }
     
@@ -205,6 +216,9 @@ extension StorySectionView
             self.removeStoryViews();
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerClick), userInfo: nil, repeats: true);
             self.viewStory.addSubview(self.storiesView[self.currentIndex]);
+            if canVideoPlay {
+                self.storiesView[self.currentIndex].play()
+            }
             if (self.currentIndex > 0)
             {
                 self.storiesView[self.currentIndex].alpha = 0.0;

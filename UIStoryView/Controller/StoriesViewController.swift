@@ -39,11 +39,21 @@ open class StoriesViewController: UIViewController
     
     private func commonInit()
     {
-        self.storyScrollView.onDidChange = { (rowIndex) in
+        self.storyScrollView.onDidChange = { [weak self] (rowIndex) in
+            guard let self = self else { return }
+            self.pauseAllVideo()
+            self.storiesSectionView[rowIndex].canVideoPlay = true
             self.resetNearStory(rowIndex: rowIndex);
             self.currentIndex = rowIndex;
             self.storiesSectionView[rowIndex].resetSection();
             self.storiesSectionView[rowIndex].isPause = false;
+        }
+    }
+    
+    private func pauseAllVideo() {
+        for sectionView in storiesSectionView {
+            sectionView.canVideoPlay = false
+            sectionView.removeStoryViews()
         }
     }
     
@@ -65,18 +75,26 @@ open class StoriesViewController: UIViewController
         self.storiesSectionView[rowIndex].isPause = true;
     }
     
+    private func removeAllStories() {
+        for sectionView in storiesSectionView {
+            sectionView.removeStoryViews()
+        }
+    }
+    
     private func setUp()
     {
         for index in 0...self.storiesSectionModel!.count - 1
         {
             let section = self.storiesSectionModel![index];
-            let sectionView = StorySectionView(frame: self.view.bounds, storiesModel: section.getStories(), storyTintColor: self.tintColor!, storyProgressColor: self.progressColor!);
+            let sectionView = StorySectionView(frame: self.view.bounds, storiesModel: section.getStories(), storyTintColor: self.tintColor!, storyProgressColor: self.progressColor!, canVideoPlay: index == 0);
             sectionView.isPause = (index > 0);
             self.storiesSectionView.append(sectionView);
-            sectionView.onClose = { [unowned self] in
-                self.dismiss(animated: true, completion: nil);
+            sectionView.onClose = { [weak self] in
+                self?.removeAllStories()
+                self?.dismiss(animated: true, completion: nil);
             }
-            sectionView.onNext = { [unowned self] in
+            sectionView.onNext = { [weak self] in
+                guard let self = self else { return }
                 if (self.currentIndex < self.storiesSectionModel!.count - 1)
                 {
                     self.currentIndex += 1;
