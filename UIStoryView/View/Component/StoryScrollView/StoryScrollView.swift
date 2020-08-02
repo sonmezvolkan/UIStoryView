@@ -238,8 +238,8 @@ public class StoryScrollView: UIScrollView, UIScrollViewDelegate
     {
         let width = scrollView.frame.width;
         let page = Int(round(scrollView.contentOffset.x / width));
-        print("CurrentPage:\(page)");
-        self.onDidChange?(page);
+        print("CurrentPage:\(page)")
+        self.onDidChange?(page)
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView)

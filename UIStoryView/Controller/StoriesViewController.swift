@@ -40,13 +40,7 @@ open class StoriesViewController: UIViewController
     private func commonInit()
     {
         self.storyScrollView.onDidChange = { [weak self] (rowIndex) in
-            guard let self = self else { return }
-            self.pauseAllVideo()
-            self.storiesSectionView[rowIndex].canVideoPlay = true
-            self.resetNearStory(rowIndex: rowIndex);
-            self.currentIndex = rowIndex;
-            self.storiesSectionView[rowIndex].resetSection();
-            self.storiesSectionView[rowIndex].isPause = false;
+            self?.onDidChange(rowIndex: rowIndex)
         }
     }
     
@@ -90,25 +84,54 @@ open class StoriesViewController: UIViewController
             sectionView.isPause = (index > 0);
             self.storiesSectionView.append(sectionView);
             sectionView.onClose = { [weak self] in
-                self?.removeAllStories()
-                self?.dismiss(animated: true, completion: nil);
+                self?.close()
             }
             sectionView.onNext = { [weak self] in
                 guard let self = self else { return }
                 if (self.currentIndex < self.storiesSectionModel!.count - 1)
                 {
-                    self.currentIndex += 1;
-                    self.storiesSectionView[self.currentIndex].resetSection();
-                    self.storiesSectionView[self.currentIndex].isPause = false;
-                    self.storyScrollView.scrollToViewAtIndex(self.currentIndex, animated: true);
+                    self.scrollToSection(index: self.currentIndex + 1)
                 }
                 else
                 {
                     self.dismiss(animated: true, completion: nil);
                 }
             }
+            sectionView.onPrevious = { [weak self] in
+                guard let self = self else { return }
+                if self.currentIndex > 0 {
+                    self.scrollToSection(index: self.currentIndex - 1)
+                } else {
+                    self.close()
+                }
+            }
         }
         self.storyScrollView.addChildViews(self.storiesSectionView);
+    }
+    
+    private func scrollToSection(index: Int) {
+        self.currentIndex = index
+        self.storiesSectionView[self.currentIndex].resetSection();
+        self.storiesSectionView[self.currentIndex].isPause = false;
+        self.storyScrollView.scrollToViewAtIndex(self.currentIndex, animated: true);
+    }
+    
+    private func onDidChange(rowIndex: Int) {
+        self.storiesSectionView[rowIndex].isPause = false;
+        if self.currentIndex != rowIndex {
+            self.pauseAllVideo()
+            self.storiesSectionView[rowIndex].canVideoPlay = true
+            self.resetNearStory(rowIndex: rowIndex);
+            self.currentIndex = rowIndex;
+            self.storiesSectionView[rowIndex].resetSection();
+        } else {
+            self.storiesSectionView[rowIndex].play()
+        }
+    }
+    
+    private func close() {
+        removeAllStories()
+        dismiss(animated: true, completion: nil);
     }
     
     override open var prefersStatusBarHidden: Bool

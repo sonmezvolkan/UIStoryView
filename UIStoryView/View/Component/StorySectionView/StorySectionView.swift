@@ -17,6 +17,7 @@ public class StorySectionView: UIView
     
     public var onClose: (() -> Void)?;
     public var onNext: (() -> Void)?;
+    public var onPrevious: (() -> Void)?;
 
     public var stories: [IStory]?;
     public var isPause: Bool = true;
@@ -120,8 +121,12 @@ extension StorySectionView
                 self.resetTimer(touchLocation: touch.location(in: self));
             }
         } else {
-            self.storiesView[self.currentIndex].play()
+            self.play()
         }
+    }
+    
+    public func play() {
+        self.storiesView[self.currentIndex].play()
     }
 }
 
@@ -193,6 +198,8 @@ extension StorySectionView
                 self.currentIndex -= 1;
                 self.currentProgressView(index: self.currentIndex).setProgress(0.0, animated: false);
                 self.addCurrentView();
+            } else {
+                self.onPrevious?()
             }
         }
     }
@@ -217,7 +224,7 @@ extension StorySectionView
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerClick), userInfo: nil, repeats: true);
             self.viewStory.addSubview(self.storiesView[self.currentIndex]);
             if canVideoPlay {
-                self.storiesView[self.currentIndex].play()
+                self.play()
             }
             if (self.currentIndex > 0)
             {
