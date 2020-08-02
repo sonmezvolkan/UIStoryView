@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
                       "with cube animations. It requires an arraylist of IStorySection as parameter. " \
                       "Two more optional parameters are available for changing the colors of progress bar."
 
-  spec.homepage     = "https://github.com/Samcro92"
+  spec.homepage     = "https://github.com/sonmezvolkan"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -84,7 +84,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/Samcro92/UIStoryView.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/sonmezvolkan/UIStoryView.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
