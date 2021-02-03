@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit;
+import UIKit
 import AVKit
 
 public class StoryView: UIView
@@ -17,6 +17,9 @@ public class StoryView: UIView
     
     public var onLoadDidEnd: ((Bool) -> Void)?;
     public var isLastStory: Bool?;
+    
+    public var onTouchesBegan: ((Set<UITouch>, UIEvent?) -> Void)?
+    public var onTouchesEnd: ((Set<UITouch>, UIEvent?) -> Void)?
     
     private var storyModel: IStory?;
     private var isLoaded: Bool = false;
@@ -109,8 +112,16 @@ public class StoryView: UIView
             }
         });
         playerLayer?.frame = self.bounds;
-        self.contentView.layer.addSublayer(playerLayer!);
-
+        playerLayer?.videoGravity = .resizeAspectFill
+        getLayerView().layer.addSublayer(playerLayer!);
+    }
+    
+    private func getLayerView() -> UIView {
+        let templateView = UIView()
+        templateView.isUserInteractionEnabled = true
+        templateView.frame = self.bounds
+        contentView.addSubview(templateView)
+        return templateView
     }
     
     @objc private func stalled(notification: NSNotification)
@@ -135,6 +146,15 @@ public class StoryView: UIView
     
     public func pause() {
         player?.pause()
+    }
+    
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("view began")
+        onTouchesBegan?(touches, event)
+    }
+
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        onTouchesEnd?(touches, event)
     }
 }
 

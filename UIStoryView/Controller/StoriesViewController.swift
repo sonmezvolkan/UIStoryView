@@ -22,6 +22,9 @@ open class StoriesViewController: UIViewController
     
     private var currentIndex = 0;
     
+    fileprivate var moveToSection: Int?
+    fileprivate var isMoved: Bool = true
+    
     fileprivate class func createInstance() -> StoriesViewController
     {
         let podBundle = Bundle(for: StoriesViewController.self)
@@ -41,6 +44,20 @@ open class StoriesViewController: UIViewController
     {
         self.storyScrollView.onDidChange = { [weak self] (rowIndex) in
             self?.onDidChange(rowIndex: rowIndex)
+        }
+        
+        if let section = self.moveToSection {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                self.pauseAllVideo()
+                self.scrollToSection(index: section, animated: false)
+            })
+        }
+    }
+    
+    private func pauseVideo() {
+        for sectionView in storiesSectionView {
+            sectionView.canVideoPlay = false
+            sectionView.pauseVideos()
         }
     }
     
@@ -109,11 +126,11 @@ open class StoriesViewController: UIViewController
         self.storyScrollView.addChildViews(self.storiesSectionView);
     }
     
-    private func scrollToSection(index: Int) {
+    private func scrollToSection(index: Int, animated: Bool = true) {
         self.currentIndex = index
         self.storiesSectionView[self.currentIndex].resetSection();
         self.storiesSectionView[self.currentIndex].isPause = false;
-        self.storyScrollView.scrollToViewAtIndex(self.currentIndex, animated: true);
+        self.storyScrollView.scrollToViewAtIndex(self.currentIndex, animated: animated);
     }
     
     private func onDidChange(rowIndex: Int) {
@@ -146,6 +163,7 @@ open class StoriesBuilder
     private var trackTintColor: UIColor = UIColor(red: 216, green: 216, blue: 216).withAlphaComponent(0.48);
     private var progressTintColor: UIColor = UIColor(red: 57, green: 151, blue: 254);
     private var stories: [IStorySection]!;
+    private var moveToSection: Int?
     
     public init(stories: [IStorySection])
     {
@@ -165,11 +183,17 @@ open class StoriesBuilder
         return self;
     }
     
+    public func setMoveToSection(section: Int) -> StoriesBuilder {
+        self.moveToSection = section
+        return self
+    }
+    
     public func build() -> StoriesViewController
     {
         self.storiesVC.storiesSectionModel = self.stories;
         self.storiesVC.tintColor = self.trackTintColor;
         self.storiesVC.progressColor = self.progressTintColor;
+        self.storiesVC.moveToSection = self.moveToSection
         return storiesVC;
     }
     

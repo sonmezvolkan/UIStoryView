@@ -95,21 +95,29 @@ extension StorySectionView
     private func createView(_ storyModel: IStory, isLastStory: Bool) -> StoryView
     {
         let storyView = StoryView(frame: self.contentView.bounds, storyModel: storyModel);
-        storyView.isLastStory = isLastStory;
+        storyView.isLastStory = isLastStory
+        
+        storyView.onTouchesBegan = { [weak self] touches, event in
+            self?.handleTouchesBegan(touches, with: event)
+        }
+        
+        storyView.onTouchesEnd = { [weak self] touches, event in
+            self?.handleTouchesEnded(touches, with: event)
+        }
         return storyView;
     }
 }
 
 extension StorySectionView
 {
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    private func handleTouchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         self.beginDate = Date();
         self.isPause = true;
         self.storiesView[self.currentIndex].pause()
     }
     
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    private func handleTouchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         self.endDate = Date();
         let ms = HelperDate.convertToSecondFromInterval(self.endDate! - self.beginDate!);
@@ -234,6 +242,16 @@ extension StorySectionView
                 }) { (finish) in
                     
                 }
+            }
+        }
+    }
+    
+    public func pauseVideos()
+    {
+        for view in self.viewStory.subviews
+        {
+            if let storyView = view as? StoryView {
+                storyView.pause()
             }
         }
     }

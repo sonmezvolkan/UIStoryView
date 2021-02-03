@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		27BF95DD3DBEB62D420FFBB8 /* Pods_UIStoryViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28819DF945BF1772195F3E0E /* Pods_UIStoryViewTests.framework */; };
+		330B0F1125C5B7FD005D10F4 /* UIStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B0F1025C5B7FD005D10F4 /* UIStoryView.swift */; };
+		330B0F1C25C5CB51005D10F4 /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B0F1B25C5CB51005D10F4 /* SectionCell.swift */; };
+		330B0F3125C5D112005D10F4 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B0F3025C5D112005D10F4 /* Bundle+Extension.swift */; };
+		330B0F6625C5D4F3005D10F4 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B0F6525C5D4F3005D10F4 /* CircleView.swift */; };
 		763B9E6FEE04FB51A1E7575A /* Pods_UIStoryView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94764586CA4456431272C964 /* Pods_UIStoryView.framework */; };
 		F61006BD23B1F700001F7DAE /* UIStoryView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61006B323B1F700001F7DAE /* UIStoryView.framework */; };
 		F61006C223B1F700001F7DAE /* UIStoryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61006C123B1F700001F7DAE /* UIStoryViewTests.swift */; };
@@ -38,6 +42,12 @@
 
 /* Begin PBXFileReference section */
 		28819DF945BF1772195F3E0E /* Pods_UIStoryViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIStoryViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		330B0F1025C5B7FD005D10F4 /* UIStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryView.swift; sourceTree = "<group>"; };
+		330B0F1625C5B807005D10F4 /* UIStoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIStoryView.xib; sourceTree = "<group>"; };
+		330B0F1A25C5CB47005D10F4 /* SectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionCell.xib; sourceTree = "<group>"; };
+		330B0F1B25C5CB51005D10F4 /* SectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
+		330B0F3025C5D112005D10F4 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		330B0F6525C5D4F3005D10F4 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3CB8E83827B9467F0E42658E /* Pods-UIStoryViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIStoryViewTests.release.xcconfig"; path = "Target Support Files/Pods-UIStoryViewTests/Pods-UIStoryViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		8744A56339E3E85FACB11FE3 /* Pods-UIStoryViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIStoryViewTests.debug.xcconfig"; path = "Target Support Files/Pods-UIStoryViewTests/Pods-UIStoryViewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		94764586CA4456431272C964 /* Pods_UIStoryView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIStoryView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +97,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		330B0F0E25C5B7CC005D10F4 /* UIStoryView */ = {
+			isa = PBXGroup;
+			children = (
+				330B0F1025C5B7FD005D10F4 /* UIStoryView.swift */,
+				330B0F1625C5B807005D10F4 /* UIStoryView.xib */,
+			);
+			path = UIStoryView;
+			sourceTree = "<group>";
+		};
+		330B0F1925C5CB2D005D10F4 /* SectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				330B0F1A25C5CB47005D10F4 /* SectionCell.xib */,
+				330B0F1B25C5CB51005D10F4 /* SectionCell.swift */,
+			);
+			path = SectionCell;
+			sourceTree = "<group>";
+		};
+		330B0F6225C5D4C8005D10F4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				330B0F1925C5CB2D005D10F4 /* SectionCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		330B0F6325C5D4D3005D10F4 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				330B0F6425C5D4E7005D10F4 /* CircleView */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		330B0F6425C5D4E7005D10F4 /* CircleView */ = {
+			isa = PBXGroup;
+			children = (
+				330B0F6525C5D4F3005D10F4 /* CircleView.swift */,
+			);
+			path = CircleView;
+			sourceTree = "<group>";
+		};
 		94EB92B050DD652661A7BEAC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +234,7 @@
 				F6319DEE23B21C16009BCEA5 /* UIImageViewExtension.swift */,
 				F6319DF023B21C2F009BCEA5 /* UIColorExtension.swift */,
 				F6319DF223B21C41009BCEA5 /* DateExtension.swift */,
+				330B0F3025C5D112005D10F4 /* Bundle+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -213,6 +266,8 @@
 		F61006EC23B1FA01001F7DAE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				330B0F6325C5D4D3005D10F4 /* Control */,
+				330B0F6225C5D4C8005D10F4 /* Cell */,
 				F61006F023B1FA46001F7DAE /* Component */,
 				F61006E923B1F9C9001F7DAE /* Storyboard */,
 			);
@@ -248,6 +303,7 @@
 		F61006F023B1FA46001F7DAE /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				330B0F0E25C5B7CC005D10F4 /* UIStoryView */,
 				F61006EF23B1FA3A001F7DAE /* StoryScrollView */,
 				F61006EE23B1FA31001F7DAE /* StorySectionView */,
 				F61006ED23B1FA20001F7DAE /* StoryView */,
@@ -417,8 +473,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6CE531123C4ACFE003E703C /* IStorySection.swift in Sources */,
+				330B0F3125C5D112005D10F4 /* Bundle+Extension.swift in Sources */,
 				F6319DFD23B21E4C009BCEA5 /* StoryView.swift in Sources */,
+				330B0F1125C5B7FD005D10F4 /* UIStoryView.swift in Sources */,
 				F6319DEF23B21C16009BCEA5 /* UIImageViewExtension.swift in Sources */,
+				330B0F1C25C5CB51005D10F4 /* SectionCell.swift in Sources */,
+				330B0F6625C5D4F3005D10F4 /* CircleView.swift in Sources */,
 				F6319DF323B21C41009BCEA5 /* DateExtension.swift in Sources */,
 				F6319DF723B21C91009BCEA5 /* StoryScrollView.swift in Sources */,
 				F6CE530F23C4ACF4003E703C /* IStory.swift in Sources */,

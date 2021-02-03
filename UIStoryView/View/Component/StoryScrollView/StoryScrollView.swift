@@ -92,7 +92,7 @@ public class StoryScrollView: UIScrollView, UIScrollViewDelegate
     fileprivate func configureScrollView() {
         
         // Configure scroll view properties
-        
+        delaysContentTouches = false
         backgroundColor = UIColor.black
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
