@@ -76,11 +76,14 @@ extension StorySectionView
 {
     private func createViews()
     {
-        for index in 0...self.stories!.count - 1
-        {
+        guard let stories = self.stories, stories.isEmpty == false else { return }
+        
+        for index in 0...stories.count - 1 {
             self.stackProgress.addArrangedSubview(self.createProgressView());
             self.storiesView.append(self.createView(self.stories![index], isLastStory: (index == self.stories!.count - 1)));
         }
+        
+        self.canVideoPlay = stories[0].isTypeImage == false
         self.currentIndex = 0;
         self.addCurrentView();
     }
@@ -214,6 +217,7 @@ extension StorySectionView
         {
             self.currentProgressView(index: self.currentIndex).setProgress(1.0, animated: false);
             self.currentIndex += 1;
+            self.canVideoPlay = stories?[currentIndex].isTypeImage == false
             self.addCurrentView();
         }
         else if (touchLocation != nil)
@@ -233,6 +237,7 @@ extension StorySectionView
                 if (self.currentIndex < self.stories!.count - 1)
                 {
                     self.currentIndex += 1;
+                    self.canVideoPlay = stories?[currentIndex].isTypeImage == false
                     self.addCurrentView();
                 }
                 else
@@ -248,6 +253,7 @@ extension StorySectionView
             {
                 self.currentIndex -= 1;
                 self.currentProgressView(index: self.currentIndex).setProgress(0.0, animated: false);
+                self.canVideoPlay = stories?[currentIndex].isTypeImage == false
                 self.addCurrentView();
             } else {
                 self.onPrevious?()
