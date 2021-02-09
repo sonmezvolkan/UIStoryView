@@ -145,17 +145,19 @@ extension StorySectionView
     private func handleTouchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let ms = HelperDate.convertToSecondFromInterval(Date() - self.beginDate!)
         
-        if ms <= 0.2 {
+        if ms <= 0.3 {
             if let beginLocation = self.beginLocation, let currentLocation = touches.first?.location(in: self) {
                 if checkForDetail(beginLocation: beginLocation, currentLocation: currentLocation) {
                     return
                 }
+                
+                closeIfNeeded(beginLocation: beginLocation, currentLocation: currentLocation)
             }
         }
     }
     
     private func checkForDetail(beginLocation: CGPoint, currentLocation: CGPoint) -> Bool {
-        if beginLocation.y - currentLocation.y >= 150 {
+        if beginLocation.y - currentLocation.y >= 125 {
             let liveArea = CGRect(x: UIScreen.screenWidth / 3, y: UIScreen.screenHeight - 300,
                                   width: UIScreen.screenWidth / 3, height: 300)
             if beginLocation.x > liveArea.minX && beginLocation.x < liveArea.maxX &&
@@ -166,6 +168,12 @@ extension StorySectionView
         }
         
         return false
+    }
+    
+    private func closeIfNeeded(beginLocation: CGPoint, currentLocation: CGPoint) {
+        if currentLocation.y - beginLocation.y >= 125 {
+            onClose?(currentIndex)
+        }
     }
     
     public func play() {
