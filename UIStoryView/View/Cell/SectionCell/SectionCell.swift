@@ -11,28 +11,29 @@ import UIKit
 
 public class SectionCell: UICollectionViewCell {
     
-    @IBOutlet var containerView: UIView!
+    @IBOutlet var containerView: CircleView!
     @IBOutlet var imgThumbnail: UIImageView!
     @IBOutlet var lblTitle: UILabel!
     
     public func bind(section: IStorySection) {
-        prepareCotnainerView(section: section)
-        containerView.backgroundColor = section.borderColor
+        prepareContainerView(section: section)
+        prepareImageView()
         
         lblTitle.text = section.title
-        imgThumbnail.downloadImageWithoutPlaceHolder(link: section.thumbnail, completion: { [weak self] isFinished in
+        imgThumbnail.downloadImageWithoutPlaceHolder(link: section.thumbnail, completion: { isFinished in
 
         })
+        imgThumbnail.isHidden = true
     }
     
-    private func prepareCotnainerView(section: IStorySection) {
-//        print("width: \(containerView.frame.size.width)  height: \(containerView.frame.size.height)")
-//        containerView.layer.cornerRadius = 58
-//        containerView.clipsToBounds = true
-//        containerView.layer.masksToBounds = true
-//        
-//        
-//        containerView.layer.borderColor = section.borderColor?.cgColor
-//        containerView.layer.borderWidth = 0.0
+    private func prepareImageView() {
+        imgThumbnail.layer.cornerRadius = imgThumbnail.frame.width / 2
+        imgThumbnail.clipsToBounds = true
+    }
+    
+    private func prepareContainerView(section: IStorySection) {
+        containerView.layer.borderColor = section.borderColor?.cgColor
+        containerView.layer.borderWidth = 2.0
+        containerView.layer.masksToBounds = true
     }
 }

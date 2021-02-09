@@ -47,6 +47,35 @@ public class UIStoryView: UIView {
     public func setRootViewController(root: UIViewController) {
         self.rootViewController = root
     }
+    
+    private func aniamteForClose(indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: IndexPath(row: indexPath.section, section: 0)) as? SectionCell {
+            guard let tmpImageView = getImageView(image: cell.imgThumbnail.image) else { return }
+            
+            cell.imgThumbnail.isHidden = true
+            
+            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+                tmpImageView.frame = cell.imgThumbnail.globalFrame!
+                tmpImageView.layer.cornerRadius = cell.imgThumbnail.layer.cornerRadius
+            }, completion: { isFinished in
+                tmpImageView.removeFromSuperview()
+                cell.imgThumbnail.isHidden = false
+            })
+        }
+    }
+    
+    private func getImageView(image: UIImage?) -> UIImageView? {
+        guard let rootController = rootViewController else { return nil }
+        let rootFrame = rootController.view.frame
+        
+        let imgView = UIImageView()
+        imgView.image = image
+        imgView.clipsToBounds = true
+        imgView.frame = CGRect(x: 40, y: 100, width: rootFrame.width - 80, height: rootFrame.height - 200)
+            
+        rootController.view.addSubview(imgView)
+        return imgView
+    }
 }
 
 extension UIStoryView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -74,6 +103,9 @@ extension UIStoryView: UICollectionViewDelegate, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storiesBuilder = StoriesBuilder(stories: sections)
             .setMoveToSection(section: indexPath.row)
+            .setOnClose(onClose: { [weak self] indexPath in
+                self?.aniamteForClose(indexPath: indexPath)
+            })
             .build()
         
         storiesBuilder.modalPresentationStyle = .fullScreen

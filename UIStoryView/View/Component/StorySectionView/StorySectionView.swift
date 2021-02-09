@@ -15,13 +15,14 @@ public class StorySectionView: UIView
     @IBOutlet weak var stackProgress: UIStackView!
     @IBOutlet weak var viewStory: UIView!
     
-    public var onClose: (() -> Void)?;
+    public var onClose: ((_ storyIndex: Int) -> Void)?;
     public var onNext: (() -> Void)?;
     public var onPrevious: (() -> Void)?;
 
     public var stories: [IStory]?;
     public var isPause: Bool = true;
-
+    public var isWillGoDetailPage = false
+    
     private var storyTintColor: UIColor!;
     private var storyProgressColor: UIColor!;
     
@@ -31,6 +32,7 @@ public class StorySectionView: UIView
     private var timer: Timer?;
     private var timerClickIndex: Int = 0;
     private var beginDate: Date?;
+    private var beginLocation: CGPoint?
     private var endDate: Date?;
     
     public var canVideoPlay: Bool = false
@@ -66,7 +68,7 @@ public class StorySectionView: UIView
     @IBAction func btnClose_Click(_ sender: Any)
     {
         timer?.invalidate()
-        self.onClose?();
+        self.onClose?(currentIndex);
     }
 }
 
@@ -101,9 +103,14 @@ extension StorySectionView
             self?.handleTouchesBegan(touches, with: event)
         }
         
+        storyView.onTouchesMoved = { [weak self] touches, event in
+            self?.handleTouchesMoved(touches, with: event)
+        }
+        
         storyView.onTouchesEnd = { [weak self] touches, event in
             self?.handleTouchesEnded(touches, with: event)
         }
+        
         return storyView;
     }
 }
@@ -115,6 +122,8 @@ extension StorySectionView
         self.beginDate = Date();
         self.isPause = true;
         self.storiesView[self.currentIndex].pause()
+        
+        self.beginLocation = touches.first?.location(in: self)
     }
     
     private func handleTouchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -131,6 +140,32 @@ extension StorySectionView
         } else {
             self.play()
         }
+    }
+    
+    private func handleTouchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let ms = HelperDate.convertToSecondFromInterval(Date() - self.beginDate!)
+        
+        if ms <= 0.2 {
+            if let beginLocation = self.beginLocation, let currentLocation = touches.first?.location(in: self) {
+                if checkForDetail(beginLocation: beginLocation, currentLocation: currentLocation) {
+                    return
+                }
+            }
+        }
+    }
+    
+    private func checkForDetail(beginLocation: CGPoint, currentLocation: CGPoint) -> Bool {
+        if beginLocation.y - currentLocation.y >= 150 {
+            let liveArea = CGRect(x: UIScreen.screenWidth / 3, y: UIScreen.screenHeight - 300,
+                                  width: UIScreen.screenWidth / 3, height: 300)
+            if beginLocation.x > liveArea.minX && beginLocation.x < liveArea.maxX &&
+                beginLocation.y > liveArea.minY {
+                onClose?(currentIndex)
+                return true
+            }
+        }
+        
+        return false
     }
     
     public func play() {

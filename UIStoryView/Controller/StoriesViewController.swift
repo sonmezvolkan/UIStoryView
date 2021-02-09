@@ -17,6 +17,7 @@ open class StoriesViewController: UIViewController
     
     private var storiesSectionView = [StorySectionView]();
     
+    fileprivate var onClose: ((IndexPath) -> Void)?
     fileprivate var tintColor: UIColor?;
     fileprivate var progressColor: UIColor?;
     
@@ -100,8 +101,8 @@ open class StoriesViewController: UIViewController
             let sectionView = StorySectionView(frame: self.view.bounds, storiesModel: section.getStories(), storyTintColor: self.tintColor!, storyProgressColor: self.progressColor!, canVideoPlay: index == 0);
             sectionView.isPause = (index > 0);
             self.storiesSectionView.append(sectionView);
-            sectionView.onClose = { [weak self] in
-                self?.close()
+            sectionView.onClose = { [weak self] storyIndex in
+                self?.close(storyIndex: storyIndex)
             }
             sectionView.onNext = { [weak self] in
                 guard let self = self else { return }
@@ -119,7 +120,7 @@ open class StoriesViewController: UIViewController
                 if self.currentIndex > 0 {
                     self.scrollToSection(index: self.currentIndex - 1)
                 } else {
-                    self.close()
+//                    self.close()
                 }
             }
         }
@@ -146,9 +147,12 @@ open class StoriesViewController: UIViewController
         }
     }
     
-    private func close() {
+    private func close(storyIndex: Int) {
         removeAllStories()
-        dismiss(animated: true, completion: nil);
+        dismiss(animated: false, completion: { [weak self] in
+            guard let self = self else { return }
+            self.onClose?(IndexPath(row: storyIndex, section: self.currentIndex))
+        });
     }
     
     override open var prefersStatusBarHidden: Bool
@@ -164,6 +168,7 @@ open class StoriesBuilder
     private var progressTintColor: UIColor = UIColor(red: 57, green: 151, blue: 254);
     private var stories: [IStorySection]!;
     private var moveToSection: Int?
+    private var onClose: ((IndexPath) -> Void)?
     
     public init(stories: [IStorySection])
     {
@@ -188,12 +193,18 @@ open class StoriesBuilder
         return self
     }
     
+    public func setOnClose(onClose: ((IndexPath) -> Void)?) -> StoriesBuilder {
+        self.onClose = onClose
+        return self
+    }
+    
     public func build() -> StoriesViewController
     {
         self.storiesVC.storiesSectionModel = self.stories;
         self.storiesVC.tintColor = self.trackTintColor;
         self.storiesVC.progressColor = self.progressTintColor;
         self.storiesVC.moveToSection = self.moveToSection
+        self.storiesVC.onClose = onClose
         return storiesVC;
     }
     

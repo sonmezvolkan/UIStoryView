@@ -19,6 +19,7 @@ public class StoryView: UIView
     public var isLastStory: Bool?;
     
     public var onTouchesBegan: ((Set<UITouch>, UIEvent?) -> Void)?
+    public var onTouchesMoved: ((Set<UITouch>, UIEvent?) -> Void)?
     public var onTouchesEnd: ((Set<UITouch>, UIEvent?) -> Void)?
     
     private var storyModel: IStory?;
@@ -155,6 +156,10 @@ public class StoryView: UIView
 
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         onTouchesEnd?(touches, event)
+    }
+    
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        onTouchesMoved?(touches, event)
     }
 }
 
