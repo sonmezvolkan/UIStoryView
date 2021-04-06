@@ -95,12 +95,12 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "UIStoryView", "UIStoryView/**/*.{h,m,swift,png}"
+  spec.source_files  = "UIStoryView", "UIStoryView/**/*.{h,m,swift,png, gif}"
   spec.exclude_files = "Classes/Exclude"
 
 
   spec.resource_bundles = {
-    "UIStoryView" => ["UIStoryView/**/*.{storyboard,xib,png}"]
+    "UIStoryView" => ["UIStoryView/**/*.{storyboard,xib,png, gif}"]
   }
 
   # spec.public_header_files = "Classes/**/*.h"

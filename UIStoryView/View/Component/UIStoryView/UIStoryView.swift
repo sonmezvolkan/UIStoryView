@@ -103,6 +103,7 @@ extension UIStoryView: UICollectionViewDelegate, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storiesBuilder = StoriesBuilder(stories: sections)
             .setMoveToSection(section: indexPath.row)
+            .setProgressTintColor(color: .yellow)
             .setOnClose(onClose: { [weak self] indexPath in
                 self?.aniamteForClose(indexPath: indexPath)
             })

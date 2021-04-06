@@ -15,6 +15,9 @@ public class StorySectionView: UIView
     @IBOutlet weak var stackProgress: UIStackView!
     @IBOutlet weak var viewStory: UIView!
     
+    private var loadingImageView: UIImageView?
+    private var loadingContainerView: UIView?
+    
     public var onClose: ((_ storyIndex: Int) -> Void)?;
     public var onNext: (() -> Void)?;
     public var onPrevious: (() -> Void)?;
@@ -192,6 +195,7 @@ extension StorySectionView
         {
             if (!isPause && self.storiesView[self.currentIndex].getIsLoaded())
             {
+                stopLoadingGif()
                 UIView.animate(withDuration: 0.1) {
                     let progressValue = self.currentProgressView(index: self.currentIndex).progress + Float(self.getStepValue);
                     self.currentProgressView(index: self.currentIndex).setProgress(progressValue, animated: true);
@@ -277,6 +281,7 @@ extension StorySectionView
         print("\(self.currentIndex)");
         if (self.currentIndex < self.stories!.count)
         {
+            self.startLoadingGif()
             self.removeStoryViews();
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerClick), userInfo: nil, repeats: true);
             self.viewStory.addSubview(self.storiesView[self.currentIndex]);
@@ -379,5 +384,48 @@ extension StorySectionView
             let progressView = self.stackProgress.arrangedSubviews[index] as! UIProgressView
             progressView.setProgress(0, animated: false);
         }
+    }
+}
+
+extension StorySectionView {
+    
+    public func startLoadingGif() {
+        if loadingContainerView == nil {
+            addLoadingContainerView()
+        }
+        
+        loadingContainerView?.isHidden = false
+        loadingImageView?.startGif(resourceName: "animation_loading")
+    }
+    
+    private func stopLoadingGif() {
+        loadingImageView?.stopAnimating()
+        loadingContainerView?.isHidden = true
+    }
+    
+    private func addLoadingContainerView() {
+        loadingContainerView = UIView()
+        loadingContainerView?.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(loadingContainerView!)
+        loadingContainerView?.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        loadingContainerView?.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        loadingContainerView?.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        loadingContainerView?.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        loadingContainerView?.alpha = 0.6
+        loadingContainerView?.backgroundColor = .black
+        addImageView()
+    }
+    
+    private func addImageView() {
+        loadingImageView = UIImageView()
+        loadingImageView?.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(loadingImageView!)
+        
+        loadingImageView?.widthAnchor.constraint(equalToConstant: 96).isActive = true
+        loadingImageView?.heightAnchor.constraint(equalToConstant: 96).isActive = true
+        loadingImageView?.centerYAnchor.constraint(equalTo: self.loadingContainerView!.centerYAnchor).isActive = true
+        loadingImageView?.centerXAnchor.constraint(equalTo: self.loadingContainerView!.centerXAnchor).isActive = true
     }
 }
